@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.jeslogies.runsmilo" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>untouched</name>
+    <name>Run Smilo</name>
     <description>
-        This is a game where the player has to stay untouched by any harfull objects.
+        Make your SMILO run as fast as you can from the DEVIL SMILO.
     </description>
     <author email="pargearnold@ymail.com" href="http://www.facebook.com/arnold.parge">
         Arnold Parge
