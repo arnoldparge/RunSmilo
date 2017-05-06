@@ -278,8 +278,8 @@ canvas.Scene.new({
         elem.drawImage("img1");
         stage.append(elem);
         setTimeout(function () {
-            canvas.Scene.call("splash_squ");
-        }, 4000);
+            canvas.Scene.call("menu");
+        }, 5000);
     },
     render: function (stage) {
 
