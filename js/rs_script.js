@@ -13,11 +13,21 @@ var curr_scene;
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
+
+
+    var success = function (status) {
+        console.log("successfully cleared cache");
+    };
+    var error = function (status) {
+        console.log("could not clear cache");
+    };
+    window.CacheClear(success, error);
+
+
     document.addEventListener("backbutton", function (e) {
         e.preventDefault();
         //StartGame, game_over, splash_jes, splash_squ, show_credits, show_tuts, show_characters, menu
-        switch (curr_scene)
-        {
+        switch (curr_scene) {
             case "StartGame":
                 canvas.Scene.call("menu");
                 break;
