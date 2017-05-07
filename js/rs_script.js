@@ -9,6 +9,17 @@ window.ondevicemotion = function (event) {
     //zVal.innerHTML = info;
 }
 
+var curr_scene;
+
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    document.addEventListener("backbutton", function (e) {
+        e.preventDefault();
+
+    }, false);
+}
+
+
 //SPEEDS
 
 //pig = 0.5
@@ -60,6 +71,8 @@ canvas.Scene.new({
         }
     },
     ready: function (stage) {
+        curr_scene = "StartGame";
+
         score = 0;
 
         var bg = this.createElement();
@@ -143,7 +156,7 @@ canvas.Scene.new({
             devil_speed = 3.5;
         else if (score >= 3500)
             devil_speed = 4;
-        else 
+        else
             devil_speed = 0.5;
 
         score_text.fillText(score, 70, 25);
@@ -214,6 +227,7 @@ canvas.Scene.new({
         }
     },
     ready: function (stage) {
+        curr_scene = "game_over";
         gameOver = this.createElement();
         gameOver.drawImage("img_gameover", 5, 10);
         stage.append(gameOver);
@@ -278,6 +292,7 @@ canvas.Scene.new({
         }
     },
     ready: function (stage) {
+        curr_scene = "splash_jes";
         elem = this.createElement();
         elem.drawImage("img1");
         stage.append(elem);
@@ -300,6 +315,7 @@ canvas.Scene.new({
         }
     },
     ready: function (stage) {
+        curr_scene = "splash_squ";
         elem = this.createElement();
         elem.drawImage("img1");
         stage.append(elem);
@@ -323,13 +339,14 @@ canvas.Scene.new({
         }
     },
     ready: function (stage) {
+        curr_scene = "show_credits";
 
         cred = this.createElement();
         cred.drawImage("img_credit");
         stage.append(cred);
 
         mainMenu = this.createElement();
-        mainMenu.drawImage("img_mainMenu",100,300);
+        mainMenu.drawImage("img_mainMenu", 100, 300);
         stage.append(mainMenu);
 
         mainMenu.on("click", function () {
@@ -353,6 +370,7 @@ canvas.Scene.new({
         }
     },
     ready: function (stage) {
+        curr_scene = "show_tuts";
 
         tutPoints = this.createElement();
         tutPoints.drawImage("img_tutPoints", 20, 20);
@@ -388,6 +406,7 @@ canvas.Scene.new({
         }
     },
     ready: function (stage) {
+        curr_scene = "show_characters";
 
         btnAngel = this.createElement();
         btnAngel.drawImage("img_angel", 50, 83);
@@ -406,7 +425,7 @@ canvas.Scene.new({
         btnHorn.on("click", function () {
             player_speed = 3;
             player_character = "horn";
-            canvas.Scene.call("menu");  
+            canvas.Scene.call("menu");
         });
 
         btnTiger = this.createElement();
@@ -480,9 +499,10 @@ canvas.Scene.new({
         }
     },
     ready: function (stage) {
+        curr_scene = "menu";
 
         lblTitle = this.createElement();
-        lblTitle.drawImage("img_title", 17,10);
+        lblTitle.drawImage("img_title", 17, 10);
         stage.append(lblTitle);
 
         btnStart = this.createElement();
