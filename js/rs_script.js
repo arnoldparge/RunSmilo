@@ -15,7 +15,37 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("backbutton", function (e) {
         e.preventDefault();
+        //StartGame, game_over, splash_jes, splash_squ, show_credits, show_tuts, show_characters, menu
+        switch (curr_scene)
+        {
+            case "StartGame":
+                canvas.Scene.call("menu");
+                break;
 
+            case "game_over":
+                canvas.Scene.call("menu");
+                break;
+
+            case "show_credits":
+                canvas.Scene.call("menu");
+                break;
+
+            case "show_tuts":
+                canvas.Scene.call("menu");
+                break;
+
+            case "show_characters":
+                canvas.Scene.call("menu");
+                break;
+
+            case "menu":
+                navigator.app.exitApp();
+                break;
+
+            default:
+                var kuchbhi = 7;
+                break;
+        }
     }, false);
 }
 
@@ -54,7 +84,7 @@ ready(function () {
 });
 
 canvas.Scene.new({
-    name: "StartGame", // Obligatory
+    name: "StartGame", // Obligatory 
     materials: {
         images: {
             img_angel: "img/new/angel_face.png",
@@ -215,7 +245,7 @@ canvas.Scene.new({
 
 
 canvas.Scene.new({
-    name: "game_over", // Obligatory
+    name: "game_over", // Obligatory 
     materials: {
         images: {
             img_gameover: "img/new/RS_GameOver.png",
@@ -285,7 +315,7 @@ canvas.Scene.new({
 
 
 canvas.Scene.new({
-    name: "splash_jes", // Obligatory
+    name: "splash_jes", // Obligatory //
     materials: {
         images: {
             img1: "img/jes.png"
