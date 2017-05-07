@@ -18,6 +18,8 @@ window.ondevicemotion = function (event) {
 //tiger = 2.5
 //devil = 3
 
+var can_height, can_width;
+
 var hero_elem, devil_elem, fruit_elem;
 var hero_entity, devil_entity, fruit_entity;
 var left_border;
@@ -35,7 +37,9 @@ var player_character = "angel";  // angel , horn , tiger , heart , monkey , pig
 var canvas = CE.defines("canvas_id").
     extend(Hit).
 ready(function () {
-    canvas.Scene.call("splash_jes");  //splash_jes
+    can_height = document.getElementById('canvas_id').offsetHeight;
+    can_width = document.getElementById('canvas_id').offsetWidth;
+    canvas.Scene.call("menu");  //splash_jes
 });
 
 canvas.Scene.new({
@@ -60,7 +64,7 @@ canvas.Scene.new({
 
         var bg = this.createElement();
         bg.drawImage("bg2_img_id");
-        stage.append(bg);
+        //stage.append(bg);
 
         dispScore = this.createElement();
         dispScore.drawImage("img_score", 0, 0);
@@ -109,8 +113,8 @@ canvas.Scene.new({
                 hero_entity = addEntities(0, 0, "img_angel");
                 break;
         }
-        devil_entity = addEntities(300, 300, "devil_img_id");
-        fruit_entity = addEntities(150, 150, "fruit_img_id");
+        devil_entity = addEntities(can_width - 50, can_height - 50, "devil_img_id");
+        fruit_entity = addEntities((can_width - 50) / 2, (can_height - 50) / 2, "fruit_img_id");
 
         stage.append(score_text);
     },
@@ -149,17 +153,17 @@ canvas.Scene.new({
         //MOVE HERO END
 
         //BOUNDING HERO START
-        if (hero_entity.el.x < 0)
+        if (hero_entity.el.x < 0) //LEFT WALL
             hero_entity.position(0, hero_entity.el.y);
 
-        if (hero_entity.el.x > 300)
-            hero_entity.position(300, hero_entity.el.y);
+        if (hero_entity.el.x > can_width - 50) //RIGHT WALL
+            hero_entity.position(can_width - 50, hero_entity.el.y);
 
-        if (hero_entity.el.y < 0)
+        if (hero_entity.el.y < 0) //TOP WALL
             hero_entity.position(hero_entity.el.x, 0);
 
-        if (hero_entity.el.y > 300)
-            hero_entity.position(hero_entity.el.x, 300);
+        if (hero_entity.el.y > can_height - 50) // BOTTOM WALL
+            hero_entity.position(hero_entity.el.x, can_height - 50);
         //BOUNDING HERO END
 
         //DEVIL FOLLOW HERO START
