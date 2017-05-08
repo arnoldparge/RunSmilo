@@ -223,7 +223,7 @@ canvas.Scene.new({
         //COLLECT FRUIT START
         fruit_entity.hit([hero_entity], function (state, el) {
             if (state == "over") {
-                fruit_entity.position(Math.round(Math.random() * 300), Math.round(Math.random() * 300));
+                fruit_entity.position(Math.round(Math.random() * (can_width - 50)), Math.round(Math.random() * (can_height - 50)));
                 score += 100;
             }
         });
